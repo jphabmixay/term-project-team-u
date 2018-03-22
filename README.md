@@ -10,7 +10,7 @@ Takahiro Odaka, Ellis Payne Perkins, Joe S Phabmixay, and Ivan Flores Villamar
 - [x] Create Express app with `express -view=pug myapp-uno`
 - [x] Install dependencies using `cd myapp-uno` then `npm install`
 - [x] Set up **nodemon** with `npm i --save-dev nodemon`
-- [ ] Add `"start:dev": "DEBUG=myapp-uno:* nodemon ./bin/www"` to the scripts section of package.json
+- [x] Add `"start:dev": "DEBUG=myapp-uno:* nodemon ./bin/www"` to the scripts section of package.json
 - [ ] Set up **dotenv** and add .env file to .gitignore using `npm i --save dotenv` then `echo ".env" >> .gitignore` then `touch .env`
 - [ ] Add the following to **app.js**
 ```
