@@ -12,14 +12,22 @@ Takahiro Odaka, Ellis Payne Perkins, Joe S Phabmixay, and Ivan Flores Villamar
 - [x] Set up **nodemon** with `npm i --save-dev nodemon`
 - [x] Add `"start:dev": "DEBUG=myapp-uno:* nodemon ./bin/www"` to the scripts section of package.json
 - [x] Set up **dotenv** and add .env file to .gitignore using `npm i --save dotenv` then `echo ".env" >> .gitignore` then `touch .env`
-- [x] Add the following to **app.js**
+- [x] Add the following to **app.js**:
 ```
-
 if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
 }
 ```
-- [ ] Set up **pg-promise database**
+- [x] Install and download **PostgreSQL** at their official [website](https://www.postgresql.org/download/)
+- [ ] Create database with `createdb myapp_uno_db`
+- [x] Install **pg-promise** using `npm i --save pg-promise`
+- [ ] Add **db/index.js** to the app with the following content:
+```
+const pgp = require('pg-promise')();
+const connection = pgp(process.env.DATABASE_URL);
+module.exports = connection;
+```
+- [ ] Add the DATABASE_URL environment variable to our .env with `echo DATABASE_URL=postgres://`whoami`@localhost:5432/myapp_uno_db >> .env`
 - [ ] Set up **sequelize-cli** migration
 - [ ] Add a tests route
 - [ ] Deploy to **Heroku**
