@@ -11,8 +11,8 @@ Takahiro Odaka, Ellis Payne Perkins, Joe S Phabmixay, and Ivan Flores Villamar
 - [x] Install dependencies using `cd myapp-uno` then `npm install`
 - [x] Set up **nodemon** with `npm i --save-dev nodemon`
 - [x] Add `"start:dev": "DEBUG=myapp-uno:* nodemon ./bin/www"` to the scripts section of package.json
-- [ ] Set up **dotenv** and add .env file to .gitignore using `npm i --save dotenv` then `echo ".env" >> .gitignore` then `touch .env`
-- [ ] Add the following to **app.js**
+- [x] Set up **dotenv** and add .env file to .gitignore using `npm i --save dotenv` then `echo ".env" >> .gitignore` then `touch .env`
+- [x] Add the following to **app.js**
 ```
 
 if(process.env.NODE_ENV === 'development') {
