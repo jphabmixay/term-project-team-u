@@ -86,8 +86,8 @@ module.exports = {
     return queryInterface.dropTable('test_table');
   }
 };
+``` 
 - [ ] Run the migration with `npm run db:migrate` 
-```
 - [ ] Add a tests route with the following contents:
 ```
 const express = require("express");
