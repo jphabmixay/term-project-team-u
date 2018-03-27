@@ -28,8 +28,8 @@ const connection = pgp(process.env.DATABASE_URL);
 module.exports = connection;
 ```
 - [x] Add the DATABASE_URL environment variable to our .env with `echo DATABASE_URL=postgres://`whoami`@localhost:5432/myapp_uno_db >> .env`
-- [ ] Install the sequelize and sequelize CLI packages, and then initialize using `npm i --save sequelize`, then `npm install --save sequelize-cli`, and then `node_modules/.bin/sequelize init`.
-- [ ] Rename config/config.json to config/config.js and replace contents with the following:
+- [x] Install the sequelize and sequelize CLI packages, and then initialize using `npm i --save sequelize`, then `npm install --save sequelize-cli`, and then `node_modules/.bin/sequelize init`.
+- [x] Rename config/config.json to config/config.js and replace contents with the following:
 ```
 require('dotenv').config();
 
@@ -48,7 +48,7 @@ module.exports = {
   }
 }
 ```
-- [ ] Add the following to the package.json file:
+- [x] Add the following to the package.json file:
 ```
 "db:create:migration": "sequelize migration:generate --name ",
 "db:migrate": "sequelize db:migrate",
