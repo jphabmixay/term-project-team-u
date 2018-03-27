@@ -54,8 +54,8 @@ module.exports = {
 "db:migrate": "sequelize db:migrate",
 "db:rollback": "sequelize db:migrate:undo”
 ```
-- [ ] Create our first migration with `npm run db:create:migration first-migration` which will create a new migration file in the migrations/ folder
-- [ ] Add the following contents to the new migration file: 
+- [x] Create our first migration with `npm run db:create:migration first-migration` which will create a new migration file in the migrations/ folder
+- [x] Add the following contents to the new migration file: 
 ```
 'use strict';
 
@@ -86,6 +86,7 @@ module.exports = {
     return queryInterface.dropTable('test_table');
   }
 };
+- [ ] Run the migration with `npm run db:migrate` 
 ```
 - [ ] Add a tests route with the following contents:
 ```
