@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db');
 
 router.get("/", (request, response) => {
-  res.send('tests route is working!');
+  response.send('tests route is working!');
   /*
   db.any(`INSERT INTO test_table ("testString") VALUES ('Hello at ${Date.now()}')`)
     .then( _ => db.any(`SELECT * FROM test_table`) )
