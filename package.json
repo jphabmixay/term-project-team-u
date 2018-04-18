@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "bash run-debug",
+    "start:dev": "DEBUG=myapp-uno:* nodemon ./bin/www",
     "db:create:migration": "sequelize migration:generate --name ",
     "db:migrate": "sequelize db:migrate",
     "db:rollback": "sequelize db:migrate:undo",
