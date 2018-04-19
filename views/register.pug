@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  #registerDisplay.container
+    .row
+      .box
+        .col-lg-12
+          h2.intro-text
+            | Sign Up
+          p
+            | An asterisk(*) indicates a required field.
+        .panel-body
+          form(role='form', method='POST')
+            .col-sm-6
+              .form-group
+                label(for='inputEmail')
+                  | Email Address
+                  sup *
+                input#inputEmail.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', maxlength='50', value=emailInput)
+              .form-group
+                label(for='inputPassword1')
+                  | Password
+                  sup *
+                input#inputPassword1.form-control(type='password', placeholder='********', name='password', required='', pattern='[A-z0-9 \s]{8,}', title='Minimum of 8 characters with letters from A-z and digits from 0-9')
+              .form-group
+                label(for='inputPassword2')
+                  | Confirm Password
+                  sup *
+                input#inputPassword2.form-control(type='password', placeholder='********', name='confirmpassword', required='')
+                button.btn.btn-success.pull-right(type='submit') Submit
+  // /.container
