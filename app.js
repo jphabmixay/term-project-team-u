@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 //PASSPORT -- vars (testing)
 var passport = require('passport');
-var passportConfig = require('./config/passport');
+//var passportConfig = require('./config/passport');
 var LocalStrategy = require('passport-local');
 
 var index = require('./routes/index');
@@ -36,7 +36,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/tests', tests);
 
-//PASSPORT -- app.use
+//PASSPORT -- app.use (testing)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
