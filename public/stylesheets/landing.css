@@ -1,3 +1,7 @@
 body {
-  background-image: url('../images/UNO_Logo.png');
+  background: url('../images/UNO_Logo.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
