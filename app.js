@@ -9,18 +9,24 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//PASSPORT -- vars (testing)
-/*
+//ADDED VARS
 var passport = require('passport');
-//var passportConfig = require('./config/passport');
 var LocalStrategy = require('passport-local');
-*/
+var session = require('express-session');
+//var passportConfig = require('./config/passport');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 let tests = require('./routes/tests');
 
 var app = express();
+
+//SESSIONS and PASSPORT INITIALIZATIONS
+app.use(session({
+  secret: 'secret-token'
+});
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,23 +43,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/tests', tests);
-
-//PASSPORT -- app.use (testing)
-/*
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(app.router);
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (!user.verifyPassword(password)) { return done(null, false); }
-      return done(null, user);
-    });
-  }
-));
-*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
