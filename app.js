@@ -24,7 +24,7 @@ var app = express();
 //SESSIONS and PASSPORT INITIALIZATIONS
 app.use(session({
   secret: 'secret-token'
-});
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
