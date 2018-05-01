@@ -9,11 +9,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//ADDED VARS
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
+//NON-DEFAULT VARS
+var passport = require('./auth');
 var session = require('express-session');
-//var passportConfig = require('./config/passport');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -23,7 +21,9 @@ var app = express();
 
 //SESSIONS and PASSPORT INITIALIZATIONS
 app.use(session({
-  secret: 'secret-token'
+  secret: 'secret-token',
+  resave: false,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
