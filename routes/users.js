@@ -38,7 +38,7 @@ router.post('/register', (request, response, next) => {
         if (error) {
           return next(error);
         } else {
-          return response.redirect('/lobby');
+          return response.redirect('/loginsuccess');
         }
       });
     })
