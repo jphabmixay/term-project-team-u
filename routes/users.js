@@ -21,10 +21,6 @@ router.get('/register', (request, response) => {
   response.render('register');
 });
 
-router.get('/loginsuccess', (request, response) => {
-  response.render('loginsuccess');
-});
-
 router.post('/register', (request, response, next) => {
   const { email, password } = request.body;
 

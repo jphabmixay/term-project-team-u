@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/loginsuccess', requireAuthentication, (request, response) => {
   const { user } = request;
+  response.render('loginsuccess');
 });
 
 module.exports = router;
