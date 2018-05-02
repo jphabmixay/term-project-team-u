@@ -16,16 +16,16 @@ block content
                 label(for='email')
                   | Email Address
                   sup *
-                input#inputEmail.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', maxlength='50', value=emailInput)
+                input#email.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', maxlength='50', value=emailInput)
               .form-group
                 label(for='password')
                   | Password
                   sup *
-                input#inputPassword1.form-control(type='password', placeholder='********', name='password', required='', pattern='[A-z0-9 \s]{8,}', title='Minimum of 8 characters with letters from A-z and digits from 0-9')
+                input#password.form-control(type='password', placeholder='********', name='password', required='', pattern='[A-z0-9 \s]{8,}', title='Minimum of 8 characters with letters from A-z and digits from 0-9')
               .form-group
-                label(for='password2')
+                label(for='inputPassword2')
                   | Confirm Password
                   sup *
-                input#inputPassword2.form-control(type='password2', placeholder='********', name='confirmpassword', required='')
+                input#inputPassword2.form-control(type='password', placeholder='********', name='confirmpassword', required='')
                 button.btn.btn-success.pull-right(type='submit') Submit
   // /.container
