@@ -14,18 +14,18 @@ block content
           h2.intro-text
             | Login
         .panel-body
-          form(role='form', action='/login' method='post')
+          form(role='form', action='/users/login' method='post')
             .col-sm-6
               .form-group
                 label(for='email')
                   | Email Address
                   sup *
-                input#inputEmail.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', value=emailInput, maxlength'50')
+                input#email.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', value=emailInput, maxlength'50')
               .form-group
                 label(for='password')
                   | Password
                   sup *
-                input#inputPassword1.form-control(type='password', placeholder='********', name='password' required='')
+                input#password.form-control(type='password', placeholder='********', name='password' required='')
               .col-lg-14
                 button.btn.btn-success.pull-right(type='submit') Login
                 p
