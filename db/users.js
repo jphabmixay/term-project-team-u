@@ -9,14 +9,18 @@ const create = (email, password) =>
 const find = email =>
   db.one('SELECT * FROM users WHERE email=${email}', { email });
 
-const serialize = (user, done) => done(null, user.id);
+const serialize = (user, done) => {
+  console.log('serialize', user);
+  done(null, user.id);
+};
 
-const deserialize = (id, done) =>
+const deserialize = (id, done) => {
+  console.log('deserialize', id);
   db
     .one('SELECT * FROM users WHERE id=${id}', { id })
     .then(({ id, email }) => done(null, { id, email }))
     .catch(error => done(error));
-
+};
 module.exports = {
   create,
   find,

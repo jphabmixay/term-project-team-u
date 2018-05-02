@@ -18,7 +18,7 @@ module.exports = {
           autoIncrement: true
         },
         email: {
-          type: Sequelize.DATE,
+          type: Sequelize.STRING,
           allowNull: false,
           unique: true
         },
