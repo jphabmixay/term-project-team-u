@@ -8,10 +8,6 @@ router.get('/', function(req, res, next) {
   res.send('Nothing to do here, hehe!');
 });
 
-router.get('/login', (request, response) => {
-  response.render('login', {title: 'Login Page'});
-});
-
 router.get('/register', (request, response) => {
   response.render('register', {title: 'Register Page'});
 });
@@ -20,14 +16,10 @@ router.get('/register', (request, response) => {
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/lobby',
+    successRedirect: '/loginsuccess',
     failureRedirect: '/'
   })
 );
-
-router.get('/register', (request, response) => {
-  response.render('users/register');
-});
 
 router.post('/register', (request, response, next) => {
   const { email, password } = request.body;
