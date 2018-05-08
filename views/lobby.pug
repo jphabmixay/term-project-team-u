@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    h1= Lobby Page
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+
+  body
+    #chatDisplay.container
+      form
+        .form-group
+          ul.chat_room
+            td
+          input.chat_input.form-control(placeholder='Enter Message Here')
+          br
+          button.chat_input.btn(type='submit') Send

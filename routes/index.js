@@ -7,9 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/loginsuccess', requireAuthentication, (request, response) => {
+router.get('/lobby', requireAuthentication, (request, response) => {
   const { user } = request;
-  response.render('loginsuccess');
+  response.render('lobby');
 });
 
 module.exports = router;

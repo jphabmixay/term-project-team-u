@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/loginsuccess',
+    successRedirect: '/lobby',
     failureRedirect: '/'
   })
 );
@@ -30,7 +30,7 @@ router.post('/register', (request, response, next) => {
         if (error) {
           return next(error);
         } else {
-          return response.redirect('/loginsuccess');
+          return response.redirect('/lobby');
         }
       });
     })
