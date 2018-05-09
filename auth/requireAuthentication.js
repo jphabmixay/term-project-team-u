@@ -2,7 +2,7 @@ const requireAuthentication = (request, response, next) => {
   if (request.isAuthenticated()) {
     return next();
   } else {
-    response.redirect('/login');
+    response.redirect('/users/login');
   }
 };
 
