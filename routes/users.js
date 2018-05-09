@@ -17,6 +17,10 @@ router.post(
   })
 );
 
+router.get('/login', (request, response) => {
+  response.render('login');
+});
+
 router.get('/register', (request, response) => {
   response.render('register');
 });
