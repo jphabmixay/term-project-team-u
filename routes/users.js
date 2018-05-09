@@ -8,18 +8,19 @@ router.get('/', function(req, res, next) {
   res.send('Nothing to do here, hehe!');
 });
 
+router.get('/login', (request, response) => {
+  response.render('login');
+});
+
 /* PASSPORT */
 router.post(
   '/login',
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login'
+    failureRedirect: '/users/login'
   })
 );
 
-router.get('/login', (request, response) => {
-  response.render('login');
-});
 
 router.get('/register', (request, response) => {
   response.render('register');

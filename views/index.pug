@@ -1,39 +1,44 @@
-extends layout
+doctype html
+html
+  head
+    h1= title
+    //link(rel='stylesheet', href='/stylesheets/style.css')
+    style.
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+      #messages { margin-bottom: 40px }
 
-block stylesheets
-  link(rel='stylesheet', href='stylesheets/landing.css')
+    script.
+      var socket = io();
 
-block content
-  h1= title
-  p Welcome to #{title}
-  p Please login!
-    #registerDisplay.container
-    .row
-      .box
-        .col-lg-12
-          h2.intro-text
-            | Login
-        .panel-body
-          form(role='form', action='/users/login' method='post')
-            .col-sm-6
-              .form-group
-                label(for='email')
-                  | Email Address
-                  sup *
-                input#email.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', value=emailInput, maxlength'50')
-              .form-group
-                label(for='password')
-                  | Password
-                  sup *
-                input#password.form-control(type='password', placeholder='********', name='password' required='')
-              .col-lg-14
-                button.btn.btn-success.pull-right(type='submit') Login
-                p
-                  | Don't have an account?
-                  a(href='/users/register')  Create Account
-                p
-                  a(href='/users/register')  Forgot Password?
+  body
+    p Wecome to Uno, #{user.email}!
+    //#chatDisplay.container
+    h1.chat_title Chat
+    ul#messages
+    form(action='')
+      input#m(autocomplete='off', placeholder='Enter Message Here')
+      button Send
 
-block scripts
-  script.
-  var socket = io();
+      
+    script(src='/socket.io/socket.io.js')
+    script(src='https://code.jquery.com/jquery-1.11.1.js')
+    script.
+      $(function () {
+        var socket = io();
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
