@@ -14,9 +14,6 @@ html
       #messages li:nth-child(odd) { background: #eee; }
       #messages { margin-bottom: 40px }
 
-    script.
-      var socket = io();
-
   body
     p Wecome to Uno, #{user.email}!
     //#chatDisplay.container
@@ -28,7 +25,8 @@ html
 
       
     script(src='/socket.io/socket.io.js')
-    script(src='https://code.jquery.com/jquery-1.11.1.js')
+    script.
+      var socket = io();
     script.
       $(function () {
         var socket = io();
