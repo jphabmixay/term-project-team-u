@@ -17,7 +17,7 @@ var users = require('./routes/users');
 let tests = require('./routes/tests');
 
 var app = express();
-app.io = require('./sockets')
+app.io = require('./socket')
 
 //SESSIONS and PASSPORT INITIALIZATIONS
 app.use(session({
