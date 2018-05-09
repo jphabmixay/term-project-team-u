@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+.chat_room {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+#chatDisplay{
+    width: 25%;
+    float: right;
+}

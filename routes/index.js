@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/lobby', requireAuthentication, (request, response) => {
   const { user } = request;
-  response.render('lobby');
+  response.render('lobby', { title: 'Uno Lobby!'});
 });
 
 module.exports = router;

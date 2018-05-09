@@ -12,12 +12,12 @@ var bodyParser = require('body-parser');
 //NON-DEFAULT VARS
 var passport = require('./auth');
 var session = require('express-session');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 let tests = require('./routes/tests');
 
 var app = express();
+app.io = require('./sockets')
 
 //SESSIONS and PASSPORT INITIALIZATIONS
 app.use(session({
