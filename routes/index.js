@@ -2,10 +2,16 @@ const express = require('express');
 const router = express.Router();
 const requireAuthentication = require('../auth/requireAuthentication');
 
-/* GET home/lobby page. */
+/* GET home/lobby page.
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+});*/
+
+router.get('/', requireAuthentication, (request, response) => {
+  const { user } = request;
+  response.render('index', {user, title: 'Uno Lobby!'});
 });
+
 
 router.get('/lobby', requireAuthentication, (request, response) => {
   const { user } = request;
