@@ -17,7 +17,18 @@ var users = require('./routes/users');
 let tests = require('./routes/tests');
 
 var app = express();
-app.io = require('./socket')
+var server = app.listen(app.get('port'), function () {
+  console.log('server listening on port ' + server.address().port);
+});
+var io = require('socket.io')(server);
+
+//SOCKETS
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('chat message', function(msg){
+    console.log('message ' + msg);
+  });
+});
 
 //SESSIONS and PASSPORT INITIALIZATIONS
 app.use(session({
