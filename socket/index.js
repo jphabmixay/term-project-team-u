@@ -8,10 +8,6 @@ var io;
 const init = (server) => {
     io = socketIo(server);
     app.set('io', io);
-
-    socket.on('chat', ({room_id, message}) => {
-
-    }
 };
 
 module.exports = { init }
