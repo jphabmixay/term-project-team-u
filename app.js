@@ -1,47 +1,25 @@
-if(process.env.NODE_ENV === 'development') {
-  require("dotenv").config();
-}
-
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-//NON-DEFAULT VARS
-var passport = require('./auth');
-var session = require('express-session');
+var flash = require('connect-flash');
+const passport = require('passport')
+const consolidate = require('consolidate')
 var index = require('./routes/index');
 var users = require('./routes/users');
-let tests = require('./routes/tests');
+var game = require('./routes/game');
+const test_game = require('./routes/test-game');
 
 var app = express();
-var server = app.listen(app.get('port'), function () {
-  console.log('server listening on port ' + server.address().port);
-});
-var io = require('socket.io')(server);
-
-//SOCKETS
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('chat message', function(msg){
-    console.log('message ' + msg);
-  });
-});
-
-//SESSIONS and PASSPORT INITIALIZATIONS
-app.use(session({
-  secret: 'secret-token',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine("html", consolidate.handlebars);
+app.set("view engine", "html");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -50,10 +28,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ 
+	             secret: 'Super Mario' , 
+  				 resave: false,
+  				 saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/tests', tests);
+app.use('/game', game);
+app.use('/test-game', test_game);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,48 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const passport = require('../auth');
-const User = require('../db/users');
+var express = require('express');
+var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Nothing to do here, hehe!');
-});
-
-router.get('/login', (request, response) => {
-  response.render('login');
-});
-
-/* PASSPORT */
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login'
-  })
-);
-
-
-router.get('/register', (request, response) => {
-  response.render('register');
-});
-
-router.post('/register', (request, response, next) => {
-  const { email, password } = request.body;
-
-  User.create(email, password)
-    .then(id => {
-      request.login({ email, password }, error => {
-        if (error) {
-          return next(error);
-        } else {
-          return response.redirect('/lobby');
-        }
-      });
-    })
-    .catch(error => {
-      console.log(error);
-      response.redirect('/failbot');
-    });
+  res.send('respond with a resource');
 });
 
 module.exports = router;

@@ -1,38 +1,36 @@
 {
-  "name": "myapp-uno",
+  "name": "uno",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "start:dev": "DEBUG=myapp-uno:* nodemon ./bin/www",
-    "db:create:migration": "sequelize migration:generate --name ",
-    "db:migrate": "sequelize db:migrate",
-    "db:rollback": "sequelize db:migrate:undo",
-    "postinstall": "sequelize db:migrate"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^2.0.0",
-    "body-parser": "^1.18.2",
-    "connect-pg-simple": "^4.2.1",
-    "cookie-parser": "^1.4.3",
-    "debug": "~2.6.9",
-    "dotenv": "^5.0.1",
-    "express": "~4.16.0",
+    "bcrypt": "^1.0.2",
+    "body-parser": "~1.17.1",
+    "connect-flash": "0.1.x",
+    "consolidate": "^0.14.5",
+    "cookie-parser": "~1.4.3",
+    "crypto-js": "3.1.9-1",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
-    "http-errors": "~1.6.2",
-    "morgan": "~1.9.0",
-    "npm": "^5.8.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "passport.socketio": "^3.7.0",
-    "pg-promise": "^8.2.3",
-    "pug": "2.0.0-beta11",
-    "sequelize": "^4.37.6",
+    "handlebars": "^4.0.6",
+    "handlebars-layouts": "^3.1.4",
+    "morgan": "~1.8.1",
+    "node-pre-gyp": "^0.6.34",
+    "nodemailer": "^4.0.1",
+    "passport": "^0.3.2",
+    "passport-local": "1.0.0",
+    "pg-promise": "^5.9.7",
+    "pug": "^2.0.0-beta11",
+    "sequelize": "^4.37.7",
     "sequelize-cli": "^4.0.0",
-    "serve-favicon": "~2.4.5",
-    "socket.io": "^2.1.0"
+    "serve-favicon": "~2.4.2",
+    "socket.io": "^1.7.3"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.17.4"
   }
 }
