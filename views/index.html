@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+    {{!-- This comments out the navigation var
     <!--Navbar-->
 	<nav class = "navbar navbar-inverse">
 		<div class = "container-fluid">
@@ -48,33 +49,16 @@
 		</div>
 	</nav>
 	<!--End of Navbar-->
-    <div class="row">
-        <div class="col-md-7 ">
-            <img src="/images/splash/UNOBG.png" class="img-responsive" alt="UNO Splash Image">
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="/signup" role="button" class="btn btn-warning btn-lg btn-block">Sign Up</a>
-                </div>
-                <div class="col-md-6">
-                    <a href="/login" role="button" class="btn btn-danger btn-lg btn-block">Login</a>
-                </div>
-            </div>         
-            <h2>
-                UNO is an American card game that is played with a specially printed deck. The game was originally developed in 1971 by Merle Robbins in Reading, Ohio, a suburb of Cincinnati.
-            </h2><br>
-            <h3>
-                The aim of the game is to be the first player to score 500 points, achieved by a player discarding all of their cards and earning points corresponding to the value of the remaining cards still held by the other players. <br><br>
-                The deck consists of 108 cards, of which there are 25 of each color (red, green, blue, and yellow), each color having two of each rank except zero. The ranks in each color are zero to nine, "Skip", "Draw Two", and "Reverse". In addition, the deck contains four each of "Wild" and "Wild Draw Four" cards. <br><br>
-                To start a hand, seven cards are dealt to each player, and the top card of the deck is flipped over and set aside to begin the discard pile. The player to the dealer's left plays first, unless the first card on the discard pile is an action or Wild card. On a player's turn, he/she must do one of the following:
-                <li>play a card matching the discard in color, number, or symbol</li>
-                <li>play a Wild card, or a playable Wild Draw Four card</li>
-                <li>draw the top card of the deck</li>
-                <br>
-                Play proceeds clockwise around the table.
-            </h3>
-            <br><br><br> 
+	this is the end of the commented navigation bar --}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <img src="/images/splash/UNOBG.png" class="img-responsive" alt="UNO Splash Image">
+	    </div>
+            <div class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+                <a href="/login" role="button" class="btn btn-warning btn-lg btn-block">Login</a>
+		<a href="/signup" role="button" class="btn btn-danger btn-lg btn-block">Register</a>
+            </div>
         </div>
     </div>
 </body>
