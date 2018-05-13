@@ -45,8 +45,10 @@ router.post('/signup', (req, res, next) => {
 	    /*
 		Avatars.findAll().then( ats => {
 			res.render('signup_form', { error: 'email is already used', avatars:ats});
-	    */
+	    //*/
+	    //*
 	    res.render('signup_form', { error: 'email is already used'});
+	    //*/
 	});
 
 });
@@ -58,8 +60,10 @@ router.get('/signup', function(req, res, next) {
 	}).catch(error => {
 		console.log(error);
 	})
-	*/
+	//*/
+	//*
 	res.render('signup_form', { title: 'Sign Up'});
+	//*/
 });
 
 router.get('/signup_success', function(req, res, next) {
