@@ -1,9 +1,3 @@
-/*
- * When Postgresql server is installed and a database uno is created,
- * to create the following tables and insert some data, in a terminal
- * run the command: 
- *   psql uno < uno.sql
- */
 DROP TABLE IF EXISTS Avatars CASCADE;
 
 CREATE TABLE IF NOT EXISTS Avatars (
