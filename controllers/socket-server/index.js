@@ -4,7 +4,6 @@ const eventHandler = require('../game');
 
 const lobbyController = require('../lobby');
 
-
 const GAMESERVER = 'game';
 
 

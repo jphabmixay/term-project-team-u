@@ -2,10 +2,8 @@ const access = require('../../models/game/access.js')
 const ready = require('./ready')
 const start = require('./start')
 const initClient = require('./init-client')
-const pass = require('./pass')
 const pickedColor = require('./picked-color')
 const uno = require('./uno')
-const userExit = require('./user-exit')
 const playCards = require('./play-cards')
 const refreshClient = require('./refreshClient')
 
@@ -66,10 +64,6 @@ function handleEvent(msg, toPlayer, toGroup) {
     case 'refresh':
       refreshClient(msg)
       result = 'auto refresh'
-      break
-    case 'pass':
-      pass(msg)
-      result = 'get pass'
       break
     case 'ready':
       ready(msg).then( result => {  // if ready, then start game
