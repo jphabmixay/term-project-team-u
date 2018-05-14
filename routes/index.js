@@ -23,32 +23,32 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/signup', (req, res, next) => {
+router.post('/register', (req, res, next) => {
     Users.emailNotUsed(req.body.email).then( one => {
 			user=req.body;
 			hash=SHA256(user.password)
 			user.encrypted_password=user.password
 	  		console.log(user.encrypted_password)
-    		Users.createFromSignUp(user)
+    		Users.createFromregister(user)
     		.then(() => {
   				console.log(user);	
-				res.redirect('signup_success');
+				res.redirect('register');
     		})
     		.catch(error => {
  		 		console.log(error);
     		});
 	}).catch( error => {
-	    res.render('signup_form', { error: 'email is already used'});
+	    res.render('register', { error: 'email is already used'});
 	});
 
 });
 
-router.get('/signup', function(req, res, next) {
-	res.render('signup_form', { title: 'Sign Up'});
+router.get('/register', function(req, res, next) {
+	res.render('register', { title: 'Sign Up'});
 });
 
-router.get('/signup_success', function(req, res, next) {
-	res.render('login_form',{message:"Successfully Signed Up!"});
+router.get('/register', function(req, res, next) {
+	res.render('login',{message:"Successfully Signed Up!"});
 });
 
 router.post(
@@ -65,7 +65,7 @@ router.get('/login', function(req, res, next) {
 	if (req.isAuthenticated()){
 	res.render('lobby', { auth_stat: 'Authenticated', email: req.user.email });
 	} else {
-	res.render('login_form', { error: req.flash('error') });
+	res.render('login', { error: req.flash('error') });
 	}
 });
 
