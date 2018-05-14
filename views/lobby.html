@@ -43,35 +43,32 @@
 			</h2><br>
 		<!--Game Panel-->
 		<div id="gamelist">
-			{{#each games}}
-			<div id="game{{this.id}}" class="panel panel-default">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-md-5">
-							<h4>Game {{this.id}}</h4>
-						</div>
-						<div class="col-md-4">
-							<h5># of players: {{this.players.length}}</h5>
-						</div>
-						<div class="col-md-3">
-							<button class="btn btn-danger pull-right" onclick="join_game('{{../email}}',{{this.id}})">Join Game</button>
-						</div>
-					</div>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-12">
-							<ul class="list-inline">
-							<!--Code for each player in game-->
-							{{#each this.players}}
-							<li>{{this}}</li>
-							{{/each}}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			{{/each}}
+			<table id="gameListings" class="table table-hover">
+      	  		  <thead>
+			    <tr>
+			      <th scope="col">Room Number</th>
+                              <th scope="col">Capacity</th>
+                              <th scope="col">Players</th>
+			      <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+		            {{#each games}}
+                            <tr>
+		              <td>Room {{this.id}}</td>
+			      <td>{{this.players.length}}/4</td>
+			      <td>
+			        <ul class="list-inline">
+				  {{#each this.players}}
+				  <li>{{this}}</li>
+				  {{/each}}
+				</ul>
+			      </td>
+			      <td><button class="btn btn-default" onclick="join_game('{{../email}}',{{this.id}})">Join Game</button></td>
+                            </tr>
+			    {{/each}}
+                          </tbody>
+                        </table>	
 		</div>
 	</div>
 	<div class="col-md-4">
