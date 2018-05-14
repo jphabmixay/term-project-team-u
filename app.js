@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV === 'development') {
+  require("dotenv").config();
+}
+
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
@@ -27,10 +31,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ 
-	             secret: 'Super Mario' , 
-  				 resave: false,
-  				 saveUninitialized: false
+
+//SESSIONS and PASSPORT INITIALIZATIONS
+app.use(session({
+  secret: 'secret-token',
+  resave: false,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
