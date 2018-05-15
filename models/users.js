@@ -18,7 +18,7 @@ class Users extends Models{
 		return db.one("select * from users where nick_name like $1", str); 
 	}
 	
-	static createFromSignUp(obj){
+	static createFromRegister(obj){
 		return db.none('insert into users(email, encrypted_password, nick_name) values(${email},${encrypted_password},${nick_name})',obj);
     }
 }

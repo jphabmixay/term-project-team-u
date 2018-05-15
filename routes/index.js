@@ -29,25 +29,25 @@ router.post('/register', (req, res, next) => {
 			hash=SHA256(user.password)
 			user.encrypted_password=user.password
 	  		console.log(user.encrypted_password)
-    		Users.createFromregister(user)
+    		Users.createFromRegister(user)
     		.then(() => {
   				console.log(user);	
-				res.redirect('register');
+				res.redirect('success');
     		})
     		.catch(error => {
  		 		console.log(error);
     		});
 	}).catch( error => {
-	    res.render('register', { error: 'email is already used'});
+	    res.render('signup', { error: 'email is already used'});
 	});
 
 });
 
 router.get('/register', function(req, res, next) {
-	res.render('register', { title: 'Sign Up'});
+	res.render('signup', { title: 'Sign Up'});
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/success', function(req, res, next) {
 	res.render('login',{message:"Successfully Signed Up!"});
 });
 
