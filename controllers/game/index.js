@@ -3,7 +3,6 @@ const ready = require('./ready')
 const start = require('./start')
 const initClient = require('./init-client')
 const playCards = require('./play-cards')
-const refreshClient = require('./refreshClient')
 const TO_PLAYER = { order:{}, user_id:{}, game_state:{}, handCards:{} }
 const TO_GROUP = { group:{}, refresh:{}, game_state:{}, players:{}, game:{}, cardsInPlayers:{} }
 
@@ -54,14 +53,11 @@ function handleEvent(msg, toPlayer, toGroup) {
     case 'ready':
       ready(msg).then( result => {
       if (result) {
-		result="start game";
-        toGroup.refresh = 'refresh'
+		    result="start game";
         promise = start(msg)
       } else {
         result = 'not ready to start';
       }
-
-      toGroup.refresh = 'refresh'
 	  });
 
       break
