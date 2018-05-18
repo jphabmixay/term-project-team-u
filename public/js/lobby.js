@@ -71,35 +71,3 @@ var gamelist =	`<table id="gameListings" class="table table-hover">
 var chat=`{{#each messages}}
 		<li>{{this.nick_name}}: {{this.message}}   {{this.post_time}}</li>
 		{{/each}}`;
-/*
-var game_list=
-			'{{#each games}}'
-+			'<div id="game{{this.id}}" class="panel panel-default">'
-+'				<div class="panel-heading">'
-+'					<div class="row">'
-+'						<div class="col-md-5">'
-+'							<h4>Game {{this.id}}</h4>'
-+'						</div>'
-+'						<div class="col-md-4">'
-+'							<h5># of players</h5>'
-+'						</div>'
-+'						<div class="col-md-3">'
-+'							<a href="#" role="button" class="btn btn-danger pull-right">Join Game</a>'
-+'						</div>'
-+'					</div>'
-+'				</div>'
-+'				<div class="panel-body">'
-+'					<div class="row">'
-+'						<div class="col-md-12">'
-+'							<ul class="list-inline">'
-+'							<li>playerid1</li>'
-+'							<li>playerid2</li>'
-+'							<li>playerid3</li>'
-+'							<li>playerid4</li>'
-+'							</ul>'
-+'						</div> '
-+'					</div>'
-+'				</div>'
-+'			</div>'
-+'			{{/each}}';
-*/

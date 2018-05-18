@@ -1,4 +1,3 @@
-
 db=require('../database/db')
 class Models {
 	

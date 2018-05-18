@@ -1,18 +1,13 @@
 const access = require('../../models/game/access')
 const update = require('../../models/game/update')
 
-var cards   // local global for local functions
+var cards 
 access.cards().then(result => {
   cards = result
 })
 .catch( Error => {
   console.log(Error)
 })
-
-/*
- * deal with the card played by a player
- * msg: { word:<action>, game_state:integer, game_id:integer, user_id:integer }
- */
 const playCards = msg => {
   var thisGame, thisGameCards, thisGamePlayers, promises
 
@@ -32,17 +27,10 @@ const playCards = msg => {
     }
     return Promise.all(promises)
   })
-  // .then(value => {
-  //    console.log('returned promises from value',value)
-  //  Promise.all(value).then(values => {
-  //     console.log('promises return from dealCard(..) ', value)
-  //     console.log('update database finished')
-  //   })
-  // })
   .catch( Error => {
     console.log(Error)
   })
-} // end of playCards
+}
 
 function validPlay(msg, thisGame, thisGamePlayers) {
   var inTurn = colorMatch = numberMatch = validState = anyCard = false
@@ -151,7 +139,7 @@ function dealCard(msg, thisGame, thisGameCards, thisGamePlayers) {
 		    }
 		});
     });
-    // let go temparary
+    // let go temporary
 
   } else if ( thisCard === 13 ) {
     // wild card
@@ -162,7 +150,7 @@ function dealCard(msg, thisGame, thisGameCards, thisGamePlayers) {
     getNewSeatTurn(thisGame, 1).then( newSeatTurn => {
     promises.push(update.updateGame(newSeatTurn, thisGame[0].direction
                      , thisGame[0].next_order, msg.word, ++thisGame[0].game_state, msg.game_id))
-    // let go temparary
+    // let go temporary
 	});
 
   } else if ( thisCard === 14 ) {
@@ -186,7 +174,7 @@ function dealCard(msg, thisGame, thisGameCards, thisGamePlayers) {
 		    }
         });
     });
-    // let go temparary
+    // let go temporary
 
   }
   

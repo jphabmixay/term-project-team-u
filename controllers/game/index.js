@@ -2,18 +2,9 @@ const access = require('../../models/game/access.js')
 const ready = require('./ready')
 const start = require('./start')
 const initClient = require('./init-client')
-const pickedColor = require('./picked-color')
 const uno = require('./uno')
 const playCards = require('./play-cards')
 const refreshClient = require('./refreshClient')
-
-/*
- * Content of object from client:
- * msg: { word:<action>, game_state:integer, game_id:integer, user_id:integer }
- * Content of objects send to client:
- * toPlayer: { order:string, user_id:integer, game_state:integer, handCards:array }
- * toGroup: { group:<game_id>, refresh:string game_state:integer, players:array, game:array }
- */
 const TO_PLAYER = { order:{}, user_id:{}, game_state:{}, handCards:{} }
 const TO_GROUP = { group:{}, refresh:{}, game_state:{}, players:{}, game:{}, cardsInPlayers:{} }
 
@@ -61,12 +52,8 @@ function handleEvent(msg, toPlayer, toGroup) {
     case 'draw':
       result = 'get draw'
       break
-    case 'refresh':
-      refreshClient(msg)
-      result = 'auto refresh'
-      break
     case 'ready':
-      ready(msg).then( result => {  // if ready, then start game
+      ready(msg).then( result => {
       if (result) {
 		result="start game";
         toGroup.refresh = 'refresh'
@@ -77,20 +64,7 @@ function handleEvent(msg, toPlayer, toGroup) {
 
       toGroup.refresh = 'refresh'
 	  });
-	  
-       //               start(msg) // for test with out players are really ready
 
-      break
-    case 'red':
-    case 'green':
-    case 'blue':
-    case 'yellow':
-      pickedColor(msg)
-      result = 'get ' + word
-      break
-    case 'uno':
-      uno(msg)
-      result = 'get uno'
       break
     case 'init':
       result = 'get init'
@@ -103,7 +77,6 @@ function handleEvent(msg, toPlayer, toGroup) {
     default:
       result = 'no matched word'
   }
-  //console.log('result: ', result)
   return promise || new Promise((resolve) => {resolve()});
 }
 

@@ -1,13 +1,8 @@
 const Users=require('../../models/users');
-
 const Games=require('../../models/games');
-
 const Players=require('../../models/players');
-
 const Messages=require('../../models/messages');
-
 const MaxPlayer = 4;
-
 
 function lobby(msg)
 {
@@ -37,30 +32,30 @@ Players.create(player).then( player => {
 console.log(player);
  
 Games.listJoinables().then( games=> {
- var toPlayer = {game_id: game.id, action: "enter_gameroom"};
-							var toGroup = {games: games, action:"update_games"};
-							fulfill({player:toPlayer, group:toGroup});
-						}).catch( error => {
-							games={};
-							var msg={games: games, action:"update_games"};
-							reject({player:msg, group:msg});
-						});
+ var toPlayer =	{game_id: game.id, action: "enter_gameroom"};
+				var toGroup = {games: games, action:"update_games"};
+				fulfill({player:toPlayer, group:toGroup});
+				}).catch( error => {
+					games={};
+					var msg={games: games, action:"update_games"};
+					reject({player:msg, group:msg});
+				});
 			
-					}).catch(error => {
-						console.log(error);
-						reject(error);
-					});
+				}).catch(error => {
+					console.log(error);
+					reject(error);
+				});
 		
 				}).catch( error => {
 					console.log(error);
 					reject(error);
 				});
 			
-			}).catch( error => {
-				console.log(error);
-				reject(error);
-			});
-		break;
+				}).catch( error => {
+					console.log(error);
+					reject(error);
+				});
+			break;
 	case "join_game":
 		Users.findByEmail(msg.email).then( user => {
 			console.log("join_game");
@@ -77,15 +72,15 @@ Games.listJoinables().then( games=> {
 					Games.listJoinables().then( games=> {
 						console.log(games);
  
-var toPlayer = {game_id: game.id, action: "enter_gameroom"};
+						var toPlayer = {game_id: game.id, action: "enter_gameroom"};
 
-var toGroup = {games: games, action:"update_games"};
+						var toGroup = {games: games, action:"update_games"};
 
-fulfill({player:toPlayer, group:toGroup});
-	});
-	});
-	});
- }).catch(error => {
+						fulfill({player:toPlayer, group:toGroup});
+					});
+			});
+		});
+ 	}).catch(error => {
 	console.log(error);
 			reject(error);
 		});
