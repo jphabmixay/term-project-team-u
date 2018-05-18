@@ -85,6 +85,10 @@ router.get('/lobby', function(req, res, next) {
 
 });
 
+router.get('/profile', function(req, res){
+	res.render('profile', { auth_stat: 'Authenticated', email: req.user.email, user: req.user});
+});
+
 router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
