@@ -13,26 +13,22 @@ const LOBBYSERVER = 'lobby server';
 const socketServer = (app, server) => {
   const io = socketIo(server);
 
-
   app.set('io', io);
-
 
   io.on('connection', socket => {
       console.log('game client connected');
-
 
       socket.on('disconnect', data => {
           console.log('game client disconnected');
       });
 
- 
      socket.on('chat message', function(msg) {
+        console.log('Message:' + msg);
         socket.emit('chat message', msg);
       });
 
- 
      socket.on('game', function(msg) {
-console.log('server received ', JSON.stringify(msg))
+      console.log('server received ', JSON.stringify(msg))
   
       eventHandler(msg, function(toPlayer, toGroup) {
           socket.emit('game', toPlayer);
