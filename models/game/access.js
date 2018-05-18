@@ -1,7 +1,5 @@
 const db = require('../../database/db')
 
-const AVATARS = `SELECT * FROM Avatars`
-
 const CARDS = `SELECT * FROM Cards ORDER BY id`
 
 const CARD_IDS = `SELECT id FROM Cards`
@@ -51,7 +49,6 @@ const THIS_GAME = `SELECT * FROM Games
 
 module.exports = {
   // for server init
-  avatars: () => db.any(AVATARS),
   cards: () => db.any(CARDS),
   cardIds: () => db.any(CARD_IDS),
 
