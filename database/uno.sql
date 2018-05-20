@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Games (
   direction SMALLINT,
   next_order SMALLINT,
   top_discard INTEGER REFERENCES Cards(id),
-  available BOOLEAN DEFAULT TRUE,
+  joinable BOOLEAN DEFAULT TRUE,
   game_state INTEGER DEFAULT 0
 );
 
