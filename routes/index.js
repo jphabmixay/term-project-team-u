@@ -7,7 +7,7 @@ var SHA256 = require("crypto-js/sha256");
 
 //Passport Authentication
 const passport = require('../authentication/passport');
-const requireAuthentication = require('../auth/requireAuthentication');
+const requireAuthentication = require('../authentication/requireAuthentication');
 var bcrypt = require('bcrypt');
 
 //Game and Chat
