@@ -6,14 +6,6 @@ CryptoJS=require('crypto-js');
 var SHA256 = require("crypto-js/sha256");
 const Users = require('../models/users');
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
 var localStrategy = new LocalStrategy({
       usernameField: 'email',
       passwordField: 'password',
@@ -35,6 +27,13 @@ var localStrategy = new LocalStrategy({
 	  });
   });
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 passport.use( 'local', localStrategy );
 
 module.exports=passport

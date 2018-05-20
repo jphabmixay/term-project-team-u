@@ -23,7 +23,7 @@
 </head>
 <body>
   <div id="variables" data-user_id={{user_id}} data-game_id={{game_id}} />
-  <!--Navbar-->
+  <!--NAVBAR-->
 	<nav class = "navbar navbar-inverse">
 		<div class = "container-fluid">
 			<div class = "navbar-header">
@@ -39,7 +39,7 @@
 		</div>
 	</nav>
 
-  <!--Game area here-->
+  <!--GAME-->
   <div class="row">
     <div class="col-md-8">
       <div class="row">
@@ -47,84 +47,69 @@
           <h1>GAME <span id="gameNumber"></span></h1><!--GAME ID HERE-->
         </div>
         <div class="col-md-2">
-          <button class="btn btn-success btn-lg btn-block", onclick="post('ready')">READY</button><!--ready function here, maybe can set to disappear after game starts?-->
+          <button class="btn btn-success btn-lg btn-block", onclick="post('ready')">READY</button>
         </div>
       </div>
       <div class="row">      
         <div class="col-md-2 col-md-offset-5">
-          <!--Player module-->
+          <!--PLAYER LEFT-->
           <div id="opponent2">
             <div id="opponent2_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="100" height="100"></div> 
-            <div id="opponent2_name">Player Name</div><!--Insert player name here-->
-            <div id="opponent2_hand"># of cards in hand</div><!--Card count in hand-->
+            <div id="opponent2_name">Player Name</div>
+            <div id="opponent2_hand"># of cards in hand</div>
           </div>
-          <!--end of player module-->
         </div>
       </div>
       <div class="row">
         <div class="col-md-2">
-          <!--Player module-->
+          <!--PLAYER TOP-->
           <div id="opponent1">
-  
             <div id="opponent1_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="100" height="100"></div>
-            <div id="opponent1_name">Player Name</div><!--Insert player name here-->
-            <div id="opponent1_hand"># of cards in hand</div><!--Card count in hand-->
+            <div id="opponent1_name">Player Name</div>
+            <div id="opponent1_hand"># of cards in hand</div>
           </div>
-          <!--end of player module-->
         </div>
-       <!-- <div id="dir_left" class="col-md-1"> -->
-        <div class="col-md-1">
-          <div id="dir_left"></div>
-          <p>left direction image here</p><!--game direction image, code to invert image following the game direction-->
-        </div>
-        <div id="board" class="col-md-6">
-          <h1 id="board_text">GAME TABLE HERE, DISCARD PILE</h1><!--Show top card of discard pile javascript here-->
-          <img id="cardPile" src="/images/cards/back.png"  onclick="post('draw')"  ondragend="post('draw')" alt="cardPile" width="100" height="150"> <!-- Can move to anywhere, just keep the id -->
 
-          <img id="discard" src="" alt="discard"><!-- Can move to anywhere, just keep the id -->
+        <!--GAME BOARD-->
+        <div id="board" class="col-md-6">
+          <h1 id="board_text">GAME TABLE HERE, DISCARD PILE</h1>
+          <img id="cardPile" src="/images/cards/back.png"  onclick="post('draw')"  ondragend="post('draw')" alt="cardPile" width="100" height="150">
+          <img id="discard" src="" alt="discard">
         </div>
-       <!-- <div id="dir_right" class="col-md-1"> -->
-        <div class="col-md-1">
-          <div id="dir_right"></div>
-          <p>right direction image here</p><!--game direction image, code to invert image following the game direction-->
-        </div>
+
         <div class="col-md-2">
-          <!--Player module-->
+          <!--PLAYER RIGHT-->
           <div id="opponent3">
             <div id="opponent3_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="100" height="100"></div> 
-            <div id="opponent3_name">Player Name</div><!--Insert player name here-->
-            <div id="opponent3_hand"># of cards in hand</div><!--Card count in hand-->
+            <div id="opponent3_name">Player Name</div>
+            <div id="opponent3_hand"># of cards in hand</div>
           </div>
-          <!--end of player module-->
         </div>
       </div>
-      <!--Current player dashboard-->
+      <!--PLAYER USER-->
       <div class="h-divider"></div>
       <div class="row">
         <div id="player" class="col-md-2">
           <div id="your_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="150" height="150"></div>
-          <h4>{{nick_name}}</h4><!--Insert player name here-->
+          <h4>{{nick_name}}</h4>
         </div>
-        <div id="handCards"></div><!-- Can move to anywhere, just keep the id -->
+        <div id="handCards"></div>
         <div id="player_hands" class="col-md-6">
-          <h2 id="player_hint">CARDS ON HAND HERE</h2><!--javascript to display cards on hand here-->
+          <h2 id="player_hint">CARDS ON HAND HERE</h2>
           {{#each hands}}
 		  <img src="/images/cards/{{this.image_url}}" alt="#" width="50" height="75" onclick="play('{{this.id}}')">
 		  {{/each}}
         </div>
         <div class="col-md-2 col-md-offset-2">
-          <button class="btn btn-warning btn-lg btn-block" onclick="post('draw')">DRAW</button><!--draw a card function here-->
-          <button class="btn btn-danger btn-lg btn-block" onclick="post('uno')">UNO</button><!--Call UNO! function here-->
+          <button class="btn btn-warning btn-lg btn-block" onclick="post('draw')">DRAW</button>
+          <button class="btn btn-danger btn-lg btn-block" onclick="post('uno')">UNO</button>
         </div>
       </div>
-      <!--End of current player dashboard-->  
     </div>
-    <!--End of game area-->
 
-
-
+    <!--CHAT-->
     <div class="col-md-4">
-		  <div id="chat"><!--Put Chat Widget here-->
+		  <div id="chat">
 		    <h3>Chat</h3>
 		      <style>
 	            * { margin: 0; padding: 0; box-sizing: border-box; }

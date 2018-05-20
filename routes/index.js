@@ -1,23 +1,27 @@
 var express = require( 'express' );
 var app=express();
 var router=express.Router();
-const passport = require('../authentication/passport');
 var db=require('../database/db');
+CryptoJS=require('crypto-js');
+var SHA256 = require("crypto-js/sha256");
+
+//Passport Authentication
+const passport = require('../authentication/passport');
+const requireAuthentication = require('../auth/requireAuthentication');
 var bcrypt = require('bcrypt');
+
+//Game and Chat
 const Users = require('../models/users')
 const Games = require('../models/games')
 const Messages = require('../models/messages')
 const Players = require('../models/players')
-CryptoJS=require('crypto-js');
-var SHA256 = require("crypto-js/sha256");
 
 
 router.get('/', function(req, res, next) {
-
   if(req.isAuthenticated()){
        res.redirect('lobby');
   } else {
-       res.render('index', { title: 'UNO'});
+       res.render('index', { title: 'UNO!'});
   }
 });
 
@@ -37,7 +41,9 @@ router.post('/register', (req, res, next) => {
  		 		console.log(error);
     		});
 	}).catch( error => {
-	    res.render('signup', { error: 'email is already used'});
+		console.log(error);
+	    //res.render('signup', { error: 'email is already used'});    
+      	done('Please verify your email and password', false);
 	});
 
 });
@@ -53,9 +59,9 @@ router.get('/success', function(req, res, next) {
 router.post(
   '/login',
   passport.authenticate( 'local', { session: true,
-        successRedirect : '/lobby', // redirect to the lobby
-        failureRedirect : '/login', // redirect back to the index if error
-        failureFlash : true // allow flash messages } ),
+        successRedirect : '/lobby',
+        failureRedirect : '/login',
+        failureFlash : true
   })
 );
 
