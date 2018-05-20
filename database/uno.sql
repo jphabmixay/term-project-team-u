@@ -1,3 +1,5 @@
+/* Run this file once during database setup, using heroku pg:psql --app myapp-uno < ./database/uno.sql*/
+
 DROP TABLE IF EXISTS Cards CASCADE;
 
 CREATE TABLE IF NOT EXISTS Cards (
