@@ -6,7 +6,7 @@ const MaxPlayer=4;
 class Games extends Models {
 
 	static create(){
-		return db.one("insert into games(seat_turn,direction,seat_count,joinable) values(1,1,1,true) returning id, joinable");
+		return db.one("insert into games(seat_turn,direction,seat_count,available) values(1,1,1,true) returning id, available");
 	};
 
 	static findById(id){
@@ -23,9 +23,9 @@ class Games extends Models {
 					db.one("insert into players(game_id, user_id, seat_number) values(${game_id}, ${user_id}, ${seat_number}) returning game_id, user_id", obj).then( pl => {
 						game.seat_count++;
 						if (game.seat_count === MaxPlayer)
-							game.joinable=false;
+							game.available=false;
 						console.log(game);	
-						db.none("update games set seat_count=${seat_count}, joinable=${joinable} where id=${id}",game).then(success => {
+						db.none("update games set seat_count=${seat_count}, available=${available} where id=${id}",game).then(success => {
 						fulfill(pl);
 					});
 				});
@@ -43,9 +43,9 @@ class Games extends Models {
 				db.one("delete players where game_id = ${game_id} and user_id = ${user_id}) returning game_id, user_id", obj).then( pl => {
 					game.seat_count--;
 					if (game.seat_count < MaxPlayer)
-						game.joinable=true;
+						game.available=true;
 					console.log(game);	
-					db.none("update games set seat_count=${seat_count}, joinable=${joinable} where id=${id}",game).then(success => {
+					db.none("update games set seat_count=${seat_count}, available=${available} where id=${id}",game).then(success => {
 						fulfill(pl);
 					});
 				});
@@ -56,10 +56,10 @@ class Games extends Models {
 		});
 	};
 
-	static listJoinables(){
+	static listavailables(){
 
 		return new Promise(function(fulfill, reject){
-			db.many("select * from games where joinable = true order by id ASC limit 20").then( games => {
+			db.many("select * from games where available = true order by id ASC limit 20").then( games => {
 				var iterGame=0;
 				games.forEach(game => {
 					Players.findByGameId(game.id).then( pls => {
