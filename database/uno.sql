@@ -1,17 +1,5 @@
 /* Run this file once during database setup, using heroku pg:psql --app myapp-uno < ./database/uno.sql*/
 
-DROP TABLE IF EXISTS Cards CASCADE;
-
-CREATE TABLE IF NOT EXISTS Cards (
-  id INTEGER PRIMARY KEY,
-  image_url VARCHAR(128),
-  point INTEGER NOT NULL,
-  color VARCHAR(1),
-  number_symbol SMALLINT
-);
-
-DROP TABLE IF EXISTS Users CASCADE;
-
 CREATE TABLE IF NOT EXISTS Users (
   id SERIAL PRIMARY KEY,
   encrypted_password VARCHAR(256) NOT NULL,
@@ -19,8 +7,6 @@ CREATE TABLE IF NOT EXISTS Users (
   nick_name VARCHAR(32),
   user_score INTEGER DEFAULT 0
 );
-
-DROP TABLE IF EXISTS Games CASCADE;
 
 CREATE TABLE IF NOT EXISTS Games (
   id SERIAL PRIMARY KEY,
@@ -33,7 +19,13 @@ CREATE TABLE IF NOT EXISTS Games (
   game_state INTEGER DEFAULT 0
 );
 
-DROP TABLE IF EXISTS Messages CASCADE;
+CREATE TABLE IF NOT EXISTS Cards (
+  id INTEGER PRIMARY KEY,
+  image_url VARCHAR(128),
+  point INTEGER NOT NULL,
+  color VARCHAR(1),
+  number_symbol SMALLINT
+);
 
 CREATE TABLE IF NOT EXISTS Messages (
   id SERIAL PRIMARY KEY,
