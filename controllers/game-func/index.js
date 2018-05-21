@@ -4,31 +4,31 @@ const Players=require('../../models/players');
 const Messages=require('../../models/messages');
 const MaxPlayer = 4;
 
-				var hands=[
-					{id:1,
-					 image_url: "r1.png",
-					},
-					{id:3,
-					 image_url: "r2.png",
-					},
-					{id:20,
-					 image_url: "r_skip.png",
-					},
-					{id:34,
-					 image_url: "y5.png",
-					},
-					{id:50,
-					 image_url: "g0.png",
-					},
-					{id:96,
-					 image_url: "b_reverse.png",
-					},
-					{id:107,
-					 image_url: "wild4.png",
-					},
-				 ];
+var hands=[
+	{id:1,
+	 image_url: "r1.png",
+	},
+	{id:3,
+	 image_url: "r2.png",
+	},
+	{id:20,
+	 image_url: "r_skip.png",
+	},
+	{id:34,
+	 image_url: "y5.png",
+	},
+	{id:50,
+	 image_url: "g0.png",
+	},
+	{id:96,
+	 image_url: "b_reverse.png",
+	},
+	{id:107,
+	 image_url: "wild4.png",
+	},
+ ];
 
-function mockGame(msg) {
+function gameFunc(msg) {
 
 return new Promise( function(fulfill, reject){
 			
@@ -92,4 +92,4 @@ return new Promise( function(fulfill, reject){
 		});
 }
 
-module.exports = mockGame;
+module.exports = gameFunc;
