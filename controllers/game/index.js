@@ -1,8 +1,6 @@
 const access = require('../../models/game/access.js')
 const ready = require('./ready')
 const start = require('./start')
-const initClient = require('./init-client')
-const playCards = require('./play-cards')
 const TO_PLAYER = { order:{}, user_id:{}, game_state:{}, handCards:{} }
 const TO_GROUP = { group:{}, refresh:{}, game_state:{}, players:{}, game:{}, cardsInPlayers:{} }
 
@@ -14,11 +12,10 @@ const eventHandler = (msg, callback) => {
   toPlayer.user_id = msg.user_id
   toGroup.group = msg.game_id
   handleEvent(msg, toPlayer, toGroup).then( () => {
-    // read data from the updated tables and assemble send out packages
-    promises = [access.cardsInHand(msg.game_id, msg.user_id)
-                , access.thisGame(msg.game_id)
-                , access.playersThisGroup(msg.game_id)
-                , access.cardsInPlayers(msg.game_id)]
+    promises = [access.cardsInHand(msg.game_id, msg.user_id), 
+                access.thisGame(msg.game_id),
+                access.playersThisGroup(msg.game_id),
+                access.cardsInPlayers(msg.game_id)]
     return Promise.all(promises)
   })
   .then(values => {
@@ -27,7 +24,6 @@ const eventHandler = (msg, callback) => {
     toGroup.players = values[2]
 	console.log(toGroup.players);
     toGroup.cardsInPlayers = values[3]
-    packOutPackage(msg, toPlayer, toGroup)
     return delay(50)
   .then(() => {
     callback(toPlayer, toGroup)
@@ -43,34 +39,30 @@ function handleEvent(msg, toPlayer, toGroup) {
   var promise;
   console.log(word)
   if (typeof word === 'number' || word === 'draw') {
-    promise = playCards(msg)
-    result = 'get number'
+    console.log(msg);
+    result = 'get number';
   }
   switch (word) {
     case 'draw':
-      result = 'get draw'
+      console.log(msg);
+      result = 'get draw';
       break
     case 'ready':
       ready(msg).then( result => {
       if (result) {
-		    result="start game";
-        promise = start(msg)
+		    console.log('start game');
       } else {
-        result = 'not ready to start';
+        console.log('start game');
       }
 	  });
 
-      break
-    case 'init':
-      result = 'get init'
-      initClient(toPlayer)
-      break
+      break;
     case 'exit':
-      result = 'get exit'
-      exit(msg)
-      break
+      result = 'get exit';
+      exit(msg);
+      break;
     default:
-      result = 'no matched word'
+      result = 'no matched word';
   }
   return promise || new Promise((resolve) => {resolve()});
 }
@@ -78,25 +70,22 @@ function handleEvent(msg, toPlayer, toGroup) {
 const wordMapOrder = word => {
   switch (word) {
     case 'refresh':
-      result = 'redraw'
-      break
-    case 'draw':
-      result = 'settle'
-      break
-    case 'ready':
-      result = 'refresh'
+      result = 'redraw';
       break;
-    case 'init':
-      result = 'init'
+    case 'draw':
+      result = 'settle';
+      break;
+    case 'ready':
+      result = 'refresh';
       break;
     case 'exit':
-      result = 'exit'
-      break
+      result = 'exit';
+      break;
     case 'send_chat':
-      result = 'uppate_chat'
-      break
+      result = 'uppate_chat';
+      break;
     default:
-      result = 'none'
+      result = 'none';
   }
   return result
 }
@@ -123,27 +112,6 @@ function setRefreshFlag(word) {
       result = {}
   }
   return result
-}
-
-function packOutPackage(msg, toPlayer, toGroup) {
-  
-  if (toPlayer.handCards.length===0 && toGroup.cardsInPlayers.length>0){
-  	toGroup.winner=msg.user_id;
-  }
-  toPlayer.user_id = msg.user_id
-  toPlayer.order = wordMapOrder(msg.word)
-  toGroup.refresh = setRefreshFlag(msg.word)
-  toGroup.group = msg.game_id
-  if (toGroup.game.length > 0) {
-    toGroup.game_state = toGroup.game[0].game_state
-    toPlayer.game_state = toGroup.game[0].game_state
-  }
-}
-
-function delay(t) {
-   return new Promise(function(resolve) { 
-       setTimeout(resolve, t)
-   })
 }
 
 function win_condition(hand_size) {

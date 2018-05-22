@@ -1,6 +1,5 @@
 const update = require('../../models/game/update')
 const access = require('../../models/game/access')
-/* set the player ready to play and check if all players are ready */
 
 const ready = (msg) => {
 return new Promise( function(fulfill, reject){
