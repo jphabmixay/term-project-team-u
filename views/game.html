@@ -56,7 +56,6 @@
           <div id="opponent2">
             <div id="opponent2_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="100" height="100"></div> 
             <div id="opponent2_name">Player Name 2</div>
-            <div id="opponent2_hand"># of cards in hand</div>
           </div>
         </div>
       </div>
@@ -66,14 +65,13 @@
           <div id="opponent1">
             <div id="opponent1_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="100" height="100"></div>
             <div id="opponent1_name">Player Name 3</div>
-            <div id="opponent1_hand"># of cards in hand</div>
           </div>
         </div>
 
         <!--GAME BOARD-->
         <div id="board" class="col-md-6">
           <img id="cardPile" src="/images/cards/back.png"  onclick="post('draw')"  alt="cardPile" width="100" height="150">
-          <img id="discard" src=/images/cards/b5.png"" alt="discard">
+          <!-- discard pile-->
         </div>
 
         <div class="col-md-2">
@@ -81,7 +79,6 @@
           <div id="opponent3">
             <div id="opponent3_avatar"><img src="/images/avatars/default.png" alt="#" class="img-circle" width="100" height="100"></div> 
             <div id="opponent3_name">Player Name 4</div>
-            <div id="opponent3_hand"># of cards in hand</div>
           </div>
         </div>
       </div>
@@ -94,7 +91,7 @@
         </div>
         <div id="handCards"></div>
         <div id="player_hands" class="col-md-6">
-          <h2 id="player_hint">CARDS ON HAND HERE</h2>
+          <h2 id="player_hint"></h2>
           {{#each hands}}
 		  <img src="/images/cards/{{this.image_url}}" alt="#" width="50" height="75" onclick="play('{{this.id}}')">
 		  {{/each}}
